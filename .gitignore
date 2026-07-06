@@ -20,3 +20,6 @@ venv/
 
 # Scratch (임시 분석/메모)
 .scratch/
+
+# SDD 스크래치(task brief/report/diff/ledger) — 핸드오프는 docs/HANDOFF.md에
+.superpowers/
