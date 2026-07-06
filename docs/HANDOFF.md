@@ -49,3 +49,16 @@ sg docker -c 'cd /mnt/c/Users/cutes/dev/BrainDeck/api && ./gradlew <task> --no-d
 ## 5. 참고
 - 원격: `github.com/ahnjunwoo/BrainDeck.git` (origin). `main`, `feat/step1-foundation` 푸시됨.
 - git author(로컬): `ahnjunwoo <cutesboy2@gmail.com>` (SignalDeck과 동일).
+
+## 6. macOS에서 이어받기 (플랫폼 전환)
+
+- **clone & 브랜치**: `git clone https://github.com/ahnjunwoo/BrainDeck.git && cd BrainDeck && git checkout feat/step1-foundation`
+- **설치**: JDK 21, Docker Desktop for Mac(실행해두기).
+- **git author 재설정**(repo local config는 WSL에만 있고 clone에 안 옴):
+  `git config user.name "ahnjunwoo" && git config user.email "cutesboy2@gmail.com"`
+- **WSL 전용 패턴은 macOS에서 전부 불필요**: `sg docker`, `--no-daemon` 빼고 그냥 `cd api && ./gradlew test`. (그룹/데몬 이슈는 WSL 한정)
+- **Testcontainers 400 fix는 플랫폼 무관하게 유효**(`extra["testcontainers.version"]="2.0.5"` 이미 커밋). macOS Docker Desktop에서도 그대로 동작.
+- **gradlew 실행권한**: 이 커밋에서 `+x`로 수정함 → macOS clone 후 바로 `./gradlew` 실행 가능.
+- **`.superpowers/`(ledger·task brief)는 gitignore라 clone에 없음**: 이 HANDOFF와 계획서로 재개. Task 2 brief는 스크립트로 재생성:
+  `<superpowers>/skills/subagent-driven-development/scripts/task-brief docs/superpowers/plans/2026-07-06-step1-foundation.md 2`
+- **첫 검증**: `cd api && ./gradlew test` 가 green이면 환경 정상 → Task 2 진행.
